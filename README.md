@@ -107,3 +107,11 @@ Some ideas for future work:
 1) Make the changes independent of tika by writing own wrapper over pdfbox
 2) Upgrade to latest version of tika 
 3) Cleanup the format of returned html to make it more css friendly
+
+
+
+## Cloud run
+Build image (M-processor)
+docker buildx build --platform linux/amd64 -t us-central1-docker.pkg.dev/newspub-396117/cloud-run-source-deploy/nlm-ingestor:latest --push .
+
+Deploy cloud run via GUI (Need to add cli command)

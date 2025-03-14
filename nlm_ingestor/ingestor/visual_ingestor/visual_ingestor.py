@@ -4576,33 +4576,33 @@ class Doc:
         """
         ret_val = False
         if prev_blk_box_style and curr_blk_box_style and lines_tag_list:
-            top1 = prev_blk_box_style[0]
-            bottom1 = top1 + prev_blk_box_style[4]
-            left1 = prev_blk_box_style[1]
-            right1 = prev_blk_box_style[2]
-            top2 = curr_blk_box_style[0]
-            left2 = curr_blk_box_style[1]
-            right2 = curr_blk_box_style[2]
+            top1 = float(prev_blk_box_style[0])
+            bottom1 = top1 + float(prev_blk_box_style[4])
+            left1 = float(prev_blk_box_style[1])
+            right1 = float(prev_blk_box_style[2])
+            top2 = float(curr_blk_box_style[0])
+            left2 = float(curr_blk_box_style[1])
+            right2 = float(curr_blk_box_style[2])
 
             for line in lines_tag_list:
                 # Not doing exact match on top of the next element as sometimes lines are thick
-                if bottom1 <= line['y1'] <= (top2 + 2.0) and \
-                        line['x1'] <= left1 <= line['x2'] and \
-                        line['x1'] <= left2 <= line['x2'] and \
-                        line['x1'] < right1 <= line['x2'] and \
-                        line['x1'] < right2 <= line['x2']:
+                if float(bottom1) <= float(line['y1']) <= (float(top2) + 2.0) and \
+                        float(line['x1']) <= float(left1) <= float(line['x2']) and \
+                        float(line['x1']) <= float(left2) <= float(line['x2']) and \
+                        float(line['x1']) < float(right1) <= float(line['x2']) and \
+                        float(line['x1']) < float(right2) <= float(line['x2']):
                     if check_gap:
-                        if abs(abs(line['y1'] - bottom1) - abs(top2 - line['y1'])) < 2.0:
+                        if abs(abs(float(line['y1']) - float(bottom1)) - abs(float(top2) - float(line['y1']))) < 2.0:
                             ret_val = True
                     else:
                         ret_val = True
                     break
                 elif x_axis_relaxed and \
-                        bottom1 <= line['y1'] <= (top2 + 2.0) and \
-                        line['x1'] <= left1 < line['x2'] and \
-                        line['x1'] < right1 <= line['x2']:
+                        float(bottom1) <= float(line['y1']) <= (float(top2) + 2.0) and \
+                        float(line['x1']) <= float(left1) < float(line['x2']) and \
+                        float(line['x1']) < float(right1) <= float(line['x2']):
                     if check_gap:
-                        if abs(abs(line['y1'] - bottom1) - abs(top2 - line['y1'])) < 2.0:
+                        if abs(abs(float(line['y1']) - float(bottom1)) - abs(float(top2) - float(line['y1']))) < 2.0:
                             ret_val = True
                     else:
                         ret_val = True
